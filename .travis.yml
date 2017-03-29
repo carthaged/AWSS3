@@ -1,0 +1,16 @@
+language: objective-c
+osx_image: xcode8.3
+before_install:
+- brew update
+- brew outdated carthage || brew upgrade carthage
+script:
+- ./build.sh aws/aws-sdk-ios AWSS3
+deploy:
+  provider: releases
+  api_key:
+    secure: fTyz10rjwfdQI/DyLtiiLQIqN12wIjeGC4pj9nVlSbPXCwMgDuY6gG00rc94kMechvWK2BHXL/PWENLFLcGOa4gNL+O3NELtoFklCt+reN64A3mEcuPdEngCEUtLwpMNRkewLTSCtE8AKJ3HSwKgPIJHDvale+8ZcLp3Ce1ahHZu/BOzuiOjegka8G/0IrW+aF0j7GmfsA2Ii7dVa7xLtuiTEyxVQ/T1oUf5ayz5ywnzQS6rYKMGtHWD+8nYtIwdc0/JtNhFh2UIM4UvG2KOH7tO3yRhgZJh31pVd2xIv9BPxVl/P7d9VEidGEfqA63XVOnqvEtbfGG1K1TpFbiJFTE3ZN6/y38TaRxMeyu2nXlNhpRj0fIlJeQPOqCEzPLLpvljOHtleCWe6fU6tyPx+F7ggC9NvEWuSOn2mkFE6EBuetEdIPJRSCMoVNsNqRLPvglhZnDLOz83vxSXIh+Arp6tv9LDG9KuhRQKLMZwMPc0gj+4nKj5z0nN4dE6kTTgzdceMPSZu8WBdTvY796Q7Qvg4hRlXHGlpGiAA/E0m2ksxzxtcBkwawZooyfLf1j1n2h4Iwzoc0EXsohmI+yoVuw27bOzYHd3NmNgpZFzhE68VUdHOEPqcL6f4f1ryIW1P6raIjgDGyK+h1nnclgcECIep8RznjJ6SJl6MGA98HQ=
+  file_glob: true
+  file: Archives/*
+  skip_cleanup: true
+  on:
+    tags: true
